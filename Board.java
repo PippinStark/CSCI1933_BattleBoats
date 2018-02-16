@@ -1,10 +1,8 @@
-/*
+
 public class Board {
-    private int num_rows;
-    private int num_columns;
-    private int num_boats;
+    private int num_rows, num_columns, num_boats;
     private Battleboat[] boats;
-    private Cell[][] board;
+    private Cell[][] board = Cell[num_rows][num_columns];
     private boolean debugMode;
     
  
@@ -16,8 +14,28 @@ public class Board {
     public Board(int m , int n, boolean debugMode){
         num_rows = m;
         num_columns = n;
-        num_boats = 
         this.debugMode = debugMode;
+        if((m > 9 && m <= 12) || (n > 9 && n <= 12)) {num_boats = 6;}
+        if ((m > 7 && m <= 9) || (n > 5 && n <= 9)) {num_boats = 4;}
+        if ((m > 5 && m <= 7) || (n > 5 && n <= 7)) {num_boats = 3;}
+        if((m > 3 && m <= 5) || (n > 3 && n <= 5)) {num_boats = 2;}
+        if(m == 3 || n == 3) {num_boats = 1;}
+        for(int i = 0; i < num_boats; i++) {
+            boolean orientation;
+            double a = Math.floor(Math.random()*2);
+            if (a == 0) {orientation = false;}
+            else {orientation = true;}
+            if (orientation == false) {
+                double b = Math.floor(Math.random())*m;
+                double c = Math.floor(Math.random() * (n-3));
+                int y = (int) b;
+                int x = (int) c;
+                Cell origin = new Cell(y, x, 'B');
+            }
+        }
+
+
+
         
     }
 
@@ -66,11 +84,11 @@ public class Board {
     // TODO: Return a int based on the guess for the cell/its status
     // TODO: Change the statuses of the cell if applicable
     public int guess(int r, int c){
-        if (){
+        if (r > num_rows || c > num_columns){
             return 0;
             //"Penalty: Out of Bounds";
         }
-        else if () {
+        else if (Cell.get_status() == 'B') {
             return 1;
             //"Miss";
         }
@@ -89,4 +107,6 @@ public class Board {
 
     }
 }
-*/
+
+
+
