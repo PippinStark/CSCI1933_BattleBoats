@@ -1,10 +1,9 @@
-/*
 import java.util.Scanner;
 public class Game {
 
     public static void main(String[] args) {
         int score = 0;
-        boolean debugMode = false;
+        boolean debugMode = true;
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter board rows dimension (between 3 and 12 inclusive): \n");
@@ -53,5 +52,4 @@ public class Game {
         }
     }
 }
-*/
 

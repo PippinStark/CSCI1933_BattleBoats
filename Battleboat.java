@@ -2,8 +2,8 @@ public class Battleboat {
     private int size;
     private boolean orientation; // false <-> horizontal, true <-> vertical
     private Cell[] spaces;
+    private boolean sunk = false;
 
-    // TODO: declare the Cell objects associated with each boat
 
     public Battleboat(boolean orientation, Cell[] spaces, int size){
         this.orientation = orientation;
@@ -12,6 +12,9 @@ public class Battleboat {
             this.size = size;
         }
         else {this.size = 3;}
+        for(int i = 0; i < this.size; i++) {
+            spaces[i].set_status('B');
+        }
     }
 
     public boolean get_orientation(){
@@ -22,9 +25,21 @@ public class Battleboat {
         return size;
     }
 
-    //ToDo:
     public Cell[] get_spaces(){
         return spaces;
+    }
+    public boolean is_sunk(){
+        if(sunk == true) {return sunk;}
+        else {
+            int sunk_parts = 0; //added because it would declare boats sunk after one hit
+            for (int i = 0; i < size; i++) {
+                if (spaces[i].get_status() == 'H') {
+                    sunk_parts ++;
+                }
+            }
+            if(sunk_parts == 3) {sunk = true;}
+            return sunk;
+        }
     }
     /*
     public static void main(String[] args) {
