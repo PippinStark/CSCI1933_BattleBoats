@@ -16,14 +16,16 @@ public class Cell {
         this.col = col;
         this.status = status;
     }
-    /*
+    public String toString() {
+        return row + "," + col;
+    }
+
     public static void main(String[] args) {
         Cell a = new Cell(1, 2, 'B');
         System.out.println(a.get_status());
         a.set_status('H');
         System.out.println(a.get_status());
-
     }
-    */
+
 
 }
